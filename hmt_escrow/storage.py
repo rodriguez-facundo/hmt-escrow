@@ -19,11 +19,7 @@ LOG = logging.getLogger("hmt_escrow.storage")
 if not os.getenv("IPFS_DISABLE"):
     _host = os.getenv("IPFS_HOSTNAME", 'localhost')
     _port = int(os.getenv("IPFS_TCP_PORT", '5001'))
-    try:
-        API = ipfsapi.connect(_host, _port)
-    except Exception as e:
-        raise e
-        LOG.error("Connection with IPFS failed because of: {}".format(e))
+    API = ipfsapi.connect(_host, _port)
 
 
 def download(key: str, private_key: bytes) -> Dict:
@@ -51,12 +47,7 @@ def download(key: str, private_key: bytes) -> Dict:
         Exception: if reading from IPFS fails.
 
     """
-    try:
-        ciphertext = API.cat(key)
-    except Exception as e:
-        LOG.warning(
-            "Reading the key with IPFS failed because of: {}".format(e))
-        raise e
+    ciphertext = API.cat(key)
     msg = _decrypt(private_key, ciphertext)
     return json.loads(msg)
 
@@ -88,18 +79,9 @@ def upload(msg: Dict, public_key: bytes) -> Tuple[str, str]:
         Exception: if adding bytes with IPFS fails.
 
     """
-    try:
-        manifest_ = json.dumps(msg, sort_keys=True)
-    except Exception as e:
-        LOG.error("Can't extract the json from the dict")
-        raise e
-
+    manifest_ = json.dumps(msg, sort_keys=True)
     hash_ = hashlib.sha1(manifest_.encode('utf-8')).hexdigest()
-    try:
-        key = API.add_bytes(_encrypt(public_key, manifest_))
-    except Exception as e:
-        LOG.warning("Adding bytes with IPFS failed because of: {}".format(e))
-        raise e
+    key = API.add_bytes(_encrypt(public_key, manifest_))
     return hash_, key
 
 
