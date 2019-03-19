@@ -1017,6 +1017,17 @@ def _manifest_hash(escrow_contract: Contract,
         'gas': gas
     })
 
+def status(escrow_contract: Contract,
+           gas_payer: str,
+           gas: int = GAS_LIMIT) -> str:
+    
+    status_ = escrow_contract.functions.getStatus().call({
+        'from':
+        self.gas_payer,
+        'gas':
+        gas
+    })
+    return Status(status_ + 1)
 
 if __name__ == "__main__":
     import doctest
