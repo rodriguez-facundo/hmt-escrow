@@ -1023,7 +1023,7 @@ def status(escrow_contract: Contract,
     
     status_ = escrow_contract.functions.getStatus().call({
         'from':
-        self.gas_payer,
+        .gas_payer,
         'gas':
         gas
     })
