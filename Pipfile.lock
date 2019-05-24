@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "7e387ebb13895586579f0d67cf60b53b3a650b9d0fc266d61b37b4e55f46427c"
+            "sha256": "983640ed5a06aae3d355fd20fee93c3d7a5fefcc28156113e9fb60ba5628b057"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -213,10 +213,10 @@
         },
         "ipfshttpclient": {
             "hashes": [
-                "sha256:55189b8785c0c090bb5c579080b1e63c5ffd622a1c93a573d04aa8c066ebb561",
-                "sha256:ec400ce5fceebbfb429167180433d570e2c41aa8c9f4bb1b079402257b9fb6a7"
+                "sha256:0a199a1005fe44bff9da28b5af4785b0b09ca700baac9d1e26718fe23fe89bb7",
+                "sha256:bee95c500edf669bb8a984d5588fc133fda9ec67845c5688bcbbea030a03f10f"
             ],
-            "version": "==0.4.11"
+            "version": "==0.4.12"
         },
         "lru-dict": {
             "hashes": [
@@ -226,10 +226,10 @@
         },
         "multiaddr": {
             "hashes": [
-                "sha256:b58ea1f73b3b235b2c26f2af18b212865735f9ff4de4716d40c20f4619667743",
-                "sha256:fe35ed4af5f17f6e174bf9d5801f1b82cf3ba450ec8696a331d8409f2e738132"
+                "sha256:2faec68b479945fe6b48dd2dc1f8bcccf939aa148836e3a1ab806d6c75db1238",
+                "sha256:cb7f4091a2d1fa361fe2fd237efcd963abf650efe3af1414c4e9360a34947573"
             ],
-            "version": "==0.0.7"
+            "version": "==0.0.8"
         },
         "mypy": {
             "hashes": [
@@ -261,10 +261,10 @@
         },
         "py-ecc": {
             "hashes": [
-                "sha256:2247996cf22c1126f4c9c852c9f2399d71a31e8263943a15d2b3270c7c586591",
-                "sha256:6d4ced8b1f1a632ad3e2f4da73c1dfc5d41761da3b3208b0c570cb6f295138e0"
+                "sha256:50c1868b463f72ca4055d0778fee49025798d8dfdd4822bea339d275c43b16c8",
+                "sha256:69ccd28de584b168c0a2721ca1d6eb46547b51d5070d0c313dc702f0e5d2f8d0"
             ],
-            "version": "==1.6.0"
+            "version": "==1.7.0"
         },
         "py-evm": {
             "hashes": [
@@ -408,10 +408,10 @@
         },
         "urllib3": {
             "hashes": [
-                "sha256:a53063d8b9210a7bdec15e7b272776b9d42b2fd6816401a0d43006ad2f9902db",
-                "sha256:d363e3607d8de0c220d31950a8f38b18d5ba7c0830facd71a1c6b1036b7ce06c"
+                "sha256:b246607a25ac80bedac05c6f282e3cdaf3afb65420fd024ac94435cabe6e18d1",
+                "sha256:dbe59173209418ae49d485b87d1681aefa36252ee85884c31346debd19463232"
             ],
-            "version": "==1.25.2"
+            "version": "==1.25.3"
         },
         "varint": {
             "hashes": [
@@ -421,11 +421,11 @@
         },
         "web3": {
             "hashes": [
-                "sha256:6772f7ca234c16febaa4d53f403062cb702509936b0deddab3968ce0bb8f50cb",
-                "sha256:6b8086ef2634f89e780c2fcba9e1a7e3c2cdac0edfaa8e5f15991d0afdcc5897"
+                "sha256:1800c42c3492a6ebc72f9ad4d6dadfad5ac952564a3f0e1ec05d308a3d52aac7",
+                "sha256:27058c6e07f7a3153d1355f7e7406c46c8cc0d5c7b6fdcea84f6f3c9cf7c4364"
             ],
             "index": "pypi",
-            "version": "==4.8.3"
+            "version": "==4.9.2"
         },
         "websockets": {
             "hashes": [
