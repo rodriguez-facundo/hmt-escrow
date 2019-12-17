@@ -1,7 +1,7 @@
 require('dotenv').config();
 
 const { INFURA_TOKEN, MNEMONIC, ETH_HOST, ETH_PORT } = process.env;
-const HDWalletProvider = require('truffle-hdwallet-provider');
+const HDWalletProvider = require("@truffle/hdwallet-provider");
 
 module.exports = {
   networks: {
@@ -11,20 +11,20 @@ module.exports = {
       network_id: '*',
     },
     live: {
-      provider: () => new HDWalletProvider(MNEMONIC, `https://www.mainnet.infura.io/v3/${INFURA_TOKEN}`),
+      provider: () => new HDWalletProvider(MNEMONIC, `https://mainnet.infura.io/v3/${INFURA_TOKEN}`),
       network_id: '1',
     },
     kovan: {
-      provider: () => new HDWalletProvider(MNEMONIC, `https://www.kovan.infura.io/v3/${INFURA_TOKEN}`),
+      provider: () => new HDWalletProvider(MNEMONIC, `https://kovan.infura.io/v3/${INFURA_TOKEN}`),
       network_id: '2',
     },
     ropsten: {
-      provider: () => new HDWalletProvider(MNEMONIC, `https://www.ropsten.infura.io/v3/${INFURA_TOKEN}`),
+      provider: () => new HDWalletProvider(MNEMONIC, `https://ropsten.infura.io/v3/${INFURA_TOKEN}`),
       network_id: '3',
       gas: 4700000,
     },
     rinkeby: {
-      provider: () => new HDWalletProvider(MNEMONIC, `https://www.rinkeby.infura.io/v3/${INFURA_TOKEN}`),
+      provider: () => new HDWalletProvider(MNEMONIC, `https://rinkeby.infura.io/v3/${INFURA_TOKEN}`),
       network_id: '4',
     },
   },

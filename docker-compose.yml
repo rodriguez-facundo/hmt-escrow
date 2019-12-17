@@ -40,7 +40,7 @@ services:
       - 8545:8545
 
   deploy_rinkeby:
-    command: sh -c "yarn run compile; rm -rf build; truffle migrate --reset --network rinkeby"
+    command: sh -c "rm -rf build; truffle migrate --reset --network rinkeby; jq '.networks["4"].address' build/contracts/EscrowFactory.json | tr -d \""
     build: .
 
   hmt:
