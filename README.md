@@ -149,6 +149,12 @@ True
 <Status.Partial: 5>
 ```
 
+## Deploying to rinkeby
+$ docker-compose run deploy_rinkeby bash
+$ export INFURA_TOKEN=37810be0bdd5415d89d25b32fc9b6740
+$ export MNEMONIC="<your mnemonic>"
+$ rm -rf build; truffle migrate --reset --network rinkeby
+
 ## Note for maintainers: Deploying to PyPi
 
 A build will automatically be deployed to PyPi from master if tagged with a version number.  This version number should  match the version in the `setup.py` file.

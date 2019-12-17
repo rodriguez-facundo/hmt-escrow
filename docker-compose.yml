@@ -39,6 +39,10 @@ services:
     ports:
       - 8545:8545
 
+  deploy_rinkeby:
+    command: sh -c "yarn run compile; rm -rf build; truffle migrate --reset --network rinkeby"
+    build: .
+
   hmt:
     image: hcaptcha/hmt-token
     links:
