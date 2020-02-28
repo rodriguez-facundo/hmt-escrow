@@ -67,14 +67,16 @@ def download(key: str, private_key: bytes) -> Dict:
         key = ipfs_path.split('/')[-1]
 
     try:
-        LOG.debug("Downloading key: {}".format(key))
+        LOG.error("Downloading key: {}".format(key))
         ciphertext = IPFS_CLIENT.cat(key)
+        LOG.error("Ciphertext: {}".format(ciphertext))
     except Exception as e:
         LOG.warning(
             f'Reading the key {str(key)} with private key {str(private_key)} with IPFS failed because of: {str(e)}'
         )
         raise e
     try:
+        LOG.error(f"Private and cipher: {private_key} {ciphertext}")
         msg = _decrypt(private_key, ciphertext)
     except Exception as e:
         raise e
@@ -232,17 +234,9 @@ def _decrypt(private_key: bytes, msg: bytes) -> str:
     Traceback (most recent call last):
     p2p.exceptions.DecryptionError: Failed to verify tag
     """
-    priv_key = ""
-    plaintext = ""
-    try:
-        priv_key = keys.PrivateKey(codecs.decode(private_key, 'hex'))
-        e = ecies.decrypt(msg, priv_key, shared_mac_data=SHARED_MAC_DATA)
-        plaintext = e.decode(encoding='utf-8')
-        LOG.info(f"Original message: {plaintext}, Private key: {priv_key}, Ciphertext: {msg}")
-    except Exception as e:
-        LOG.error(f"Original message: {plaintext}, Private key: {priv_key}, Ciphertext: {msg}")
-        raise e
-    return plaintext
+    priv_key = keys.PrivateKey(codecs.decode(private_key, 'hex'))
+    e = ecies.decrypt(msg, priv_key, shared_mac_data=SHARED_MAC_DATA)
+    return e.decode(encoding='utf-8')
 
 
 def _encrypt(public_key: bytes, msg: str) -> bytes:

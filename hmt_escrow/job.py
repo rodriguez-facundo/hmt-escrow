@@ -357,10 +357,13 @@ class Job:
         self.job_contract = get_escrow(job_addr)
 
         # Upload the manifest to IPFS.
+        LOG.info("Job's public key:{}".format(pub_key))
         (hash_, manifest_url) = upload(self.serialized_manifest, pub_key)
 
         self.manifest_url = manifest_url
         self.manifest_hash = hash_
+
+        LOG.info(f"Manifest url and hash {manifest_url} {hash_}")
         return self.status() == Status.Launched and self.balance() == 0
 
     def setup(self, gas: int = GAS_LIMIT) -> bool:
