@@ -189,7 +189,7 @@ def launcher(escrow_contract: Contract, gas_payer: str,
     Returns:
         str: returns the address of who launched the job.
     """
-    return escrow_contract.job_contract.functions.getLauncher().call({
+    return escrow_contract.functions.getLauncher().call({
         'from':
         gas_payer,
         'gas':
