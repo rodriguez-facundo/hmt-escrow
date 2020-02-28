@@ -7,7 +7,6 @@ import sys
 from typing import Dict, Tuple
 
 import ipfsapi
-import timeout_decorator
 from eth_keys import keys
 from ipfsapi import Client
 from p2p import ecies
@@ -22,7 +21,6 @@ IPFS_PORT = int(os.getenv("IPFS_PORT", 5001))
 IPNS_PATH = os.getenv("IPNS_PATH", f"{IPFS_HOST}:{IPFS_PORT}/ipns/")
 
 
-@timeout_decorator.timeout(20)
 def _connect(host: str, port: int) -> Client:
     try:
         IPFS_CLIENT = ipfsapi.connect(host, port)
@@ -79,7 +77,6 @@ def download(key: str, private_key: bytes) -> Dict:
     return json.loads(msg)
 
 
-@timeout_decorator.timeout(20)
 def upload(msg: Dict, public_key: bytes,
            ipns_keypair_name: str = '') -> Tuple[str, str]:
     """Upload encrypted string to IPFS.
