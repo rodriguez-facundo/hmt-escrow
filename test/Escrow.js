@@ -102,6 +102,7 @@ contract('Escrow', (accounts) => {
         await Escrow.setup(reputationOracle, recordingOracle, 10, 10, url, hash, { from: canceler });
         await Escrow.addTrustedHandlers([externalAddress], { from: canceler });
         await Escrow.storeResults(url, hash, { from: externalAddress });
+        await Escrow.isTrustedHandler(externalAddress, { from: canceler });
         assert(true);
       } catch (ex) {
         assert(false);

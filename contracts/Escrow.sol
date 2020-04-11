@@ -35,7 +35,7 @@ contract Escrow {
 
     struct TrustedHandler {
         address handlerAddress;
-        bool isTrusted;
+        uint256 isTrusted;
     }
 
     mapping(address => TrustedHandler) public trustedHandlers;
@@ -46,8 +46,8 @@ contract Escrow {
         expiration = _expiration.add(block.timestamp); // solhint-disable-line not-rely-on-time
         launcher = msg.sender;
         canceler = _canceler;
-        trustedHandlers[_canceler].isTrusted = true;
-        trustedHandlers[msg.sender].isTrusted = true;
+        trustedHandlers[_canceler].isTrusted = 1;
+        trustedHandlers[msg.sender].isTrusted = 1;
     }
 
     function getLauncher() public view returns (address) {
@@ -111,12 +111,12 @@ contract Escrow {
     }
 
     function isTrustedHandler(address _handler) public view returns (bool) {
-        return trustedHandlers[_handler].isTrusted;
+        return trustedHandlers[_handler].isTrusted == 1;
     }
 
     function addTrustedHandlers(address[] _handlers) public {
         for (uint256 i = 0; i < _handlers.length; i++) {
-            trustedHandlers[_handlers[i]].isTrusted = true;
+            trustedHandlers[_handlers[i]].isTrusted = 1;
         }
     }
 
@@ -153,8 +153,8 @@ contract Escrow {
 
         reputationOracle = _reputationOracle;
         recordingOracle = _recordingOracle;
-        trustedHandlers[reputationOracle].isTrusted = true;
-        trustedHandlers[recordingOracle].isTrusted = true;
+        trustedHandlers[reputationOracle].isTrusted = 1;
+        trustedHandlers[recordingOracle].isTrusted = 1;
 
         reputationOracleStake = _reputationOracleStake;
         recordingOracleStake = _recordingOracleStake;
