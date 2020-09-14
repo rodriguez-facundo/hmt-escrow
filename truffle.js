@@ -29,6 +29,9 @@ module.exports = {
     rinkeby: {
       provider: () => new HDWalletProvider(MNEMONIC, `https://rinkeby.infura.io/${INFURA_TOKEN}`),
       network_id: '4',
+      networkCheckTimeout: '100000',
+      gas: 0x989680,
+      gasPrice: 90000000000
     },
   },
   compilers: {
